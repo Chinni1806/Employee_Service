@@ -18,8 +18,7 @@ public class Employee {
     private String address;
     //private LocalDate joiningDate;
     private int baseSalary;
-    @Transient
-    private List<Workhour> workhour=new ArrayList<>();
+
 
     public String getId() {
         return id;
@@ -73,4 +72,16 @@ public class Employee {
         this.address = address;
         this.baseSalary = baseSalary;
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", deptName='" + deptName + '\'' +
+                ", address='" + address + '\'' +
+                ", baseSalary=" + baseSalary +
+                '}';
+    }
+
 }

@@ -13,18 +13,19 @@ public class EmpController {
     EmpService empService;
     @PostMapping("/")
     @ResponseStatus(HttpStatus.CREATED)
-    public Employee createEmployee(@RequestBody Employee employee){
-        return empService.insert(employee);
+    public void setEmployee(@RequestBody Employee employee){
+        this.empService.setEmployee(employee);
     }
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Optional<Employee> getEmpDataById(@PathVariable("id") String Id){
-        return empService.getEmpDataById(Id);
+    public Optional<Employee> getEmployee(@PathVariable("id") String id){
+        return this.empService.getEmployee(id);
     }
+
     @GetMapping("/all")
     @ResponseStatus(HttpStatus.OK)
-    public List<Employee> EmployeeList() {
-        return empService.EmployeeList();
+    public List<Employee> getAllEmployees() {
+        return this.empService.getAllEmployees();
     }
 
 

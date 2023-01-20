@@ -7,16 +7,16 @@ import java.util.List;
 import java.util.Optional;
 @Service
 public class EmpService {
-  @Autowired
+    @Autowired
     EmpRepo empRepo;
-    public Employee insert(Employee employee) {
-        return empRepo.save(employee);
+    public List<Employee> getAllEmployees(){
+        return empRepo.findAll();
     }
-    public Optional<Employee> getEmpDataById(String id) {
+    public Optional<Employee> getEmployee(String id){
         return empRepo.findById(id);
     }
-    public List<Employee> EmployeeList() {
-        return empRepo.findAll();
+    public void setEmployee(Employee employee){
+        empRepo.save(employee);
     }
 
 

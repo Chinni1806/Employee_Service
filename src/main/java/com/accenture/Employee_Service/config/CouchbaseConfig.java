@@ -1,31 +1,30 @@
 package com.accenture.Employee_Service.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 import org.springframework.data.couchbase.config.AbstractCouchbaseConfiguration;
-
 @Configuration
 public class CouchbaseConfig extends AbstractCouchbaseConfiguration {
     @Autowired
-    private ApplicationContext context;
+    Environment evn;
     @Override
     public String getConnectionString() {
-        return "couchbase://127.0.0.1";
+        return evn.getProperty("app.db.bootstrap-hosts");
     }
 
     @Override
     public String getUserName() {
-        return "test";
+        return evn.getProperty("app.db.username");
     }
 
     @Override
     public String getPassword() {
-        return "root123";
+        return evn.getProperty("app.db.password");
     }
 
     @Override
     public String getBucketName() {
-        return "employee";
+        return evn.getProperty("app.db.bucketName");
     }
 }
