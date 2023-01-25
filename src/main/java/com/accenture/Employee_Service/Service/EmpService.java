@@ -12,8 +12,8 @@ public class EmpService {
     public List<Employee> getAllEmployees(){
         return empRepo.findAll();
     }
-    public Optional<Employee> getEmployee(String id){
-        return empRepo.findById(id);
+    public Optional<Employee> getEmployee(String empId){
+        return empRepo.findById(empId);
     }
     public void setEmployee(Employee employee){
         empRepo.save(employee);

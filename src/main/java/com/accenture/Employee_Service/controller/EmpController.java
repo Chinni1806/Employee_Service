@@ -16,10 +16,10 @@ public class EmpController {
     public void setEmployee(@RequestBody Employee employee){
         this.empService.setEmployee(employee);
     }
-    @GetMapping("/{id}")
+    @GetMapping("/{empId}")
     @ResponseStatus(HttpStatus.OK)
-    public Optional<Employee> getEmployee(@PathVariable("id") String id){
-        return this.empService.getEmployee(id);
+    public Optional<Employee> getEmployee(@PathVariable("empId") String empId){
+        return this.empService.getEmployee(empId);
     }
 
     @GetMapping("/all")
