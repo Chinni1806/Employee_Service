@@ -1,5 +1,5 @@
 package com.accenture.Employee_Service.controller;
-import com.accenture.Employee_Service.KafkaProducer.KafkaMessageProducer;
+
 import com.accenture.Employee_Service.Service.EmpService;
 import com.accenture.Employee_Service.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +10,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/employee")
 public class EmpController {
-    @Autowired
-    KafkaMessageProducer kafkaMessageProducer;
+
     @Autowired
     EmpService empService;
     @PostMapping("/")
@@ -19,11 +18,7 @@ public class EmpController {
     public void setEmployee(@RequestBody Employee employee){
         this.empService.setEmployee(employee);
     }
-    @PostMapping("/message")
-    public String postMessage(@RequestBody String message){
-        kafkaMessageProducer.sendMessage(message);
-        return "Message Published";
-    }
+
     @GetMapping("/{empId}")
     @ResponseStatus(HttpStatus.OK)
     public Optional<Employee> getEmployee(@PathVariable("empId") String empId){
